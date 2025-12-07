@@ -74,16 +74,16 @@ int main() {
                 print(hash_table);
                 break;
             case 2:
-                
+                search_for_key(hash_table);
                 break;
             case 3:
-                
+                add_key(hash_table);
                 break;
             case 4:
-                
+                remove_key(hash_table);
                 break;
             case 5:
-                
+                modify_key(hash_table);
                 break;
             case 6:
                 cout << "Exiting" << endl;
@@ -133,7 +133,7 @@ void search_for_key(map<int,list<string>> &hash_table){
     
     for (const string &s : hash_table[index]){
         if (s == search) {
-            cout << "Code was found in bucket " << index << endl;
+            cout << "Code was found in at index " << index << endl;
             return;
         }
     }
@@ -171,4 +171,33 @@ void remove_key(map<int,list<string>> &hash_table){
     cout << "Code was not found" << endl;
 }
 
-void modify_key(map<int,list<string>> &hash_table);
+void modify_key(map<int,list<string>> &hash_table){
+    string oldKey,newKey;
+    cout << "Enter code to be modified: ";
+    cin >> oldKey;
+    cout << "Enter new code: ";
+    cin >> newKey;
+    
+    int index = gen_hash_index(oldKey);
+    bool found = false;
+    
+    for (auto map_it = hash_table.begin(); map_it != hash_table.end(); ++map_it) {
+        if (map_it->first == index) {
+            for (auto list_it = map_it->second.begin(); list_it != map_it->second.end(); ++list_it){
+                if (*list_it == oldKey) {
+                    map_it->second.erase(list_it);
+                    found = true;
+                    break;
+                }
+            }
+        }
+    }
+    if (!found) {
+        cout << "Old code was not found" << endl;
+        return;
+    }
+    
+    int newindex = gen_hash_index(newKey);
+    hash_table[index].push_back(newKey);
+    cout << "Code was modified" << endl;
+}
