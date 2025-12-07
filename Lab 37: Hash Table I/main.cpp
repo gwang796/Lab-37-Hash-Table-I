@@ -152,7 +152,23 @@ void add_key(map<int,list<string>> &hash_table){
 }
 
 void remove_key(map<int,list<string>> &hash_table){
+    string key;
+    cout << "Enter code to be removed: ";
+    cin >> key;
+    int index = gen_hash_index(key);
     
+    for (auto map_it = hash_table.begin(); map_it != hash_table.end(); ++map_it) {
+        if (map_it->first == index) {
+            for (auto list_it = map_it->second.begin(); list_it != map_it->second.end(); ++list_it){
+                if (*list_it == key) {
+                    map_it->second.erase(list_it);
+                    cout << "Removed from bucket " << index << endl;
+                    return;
+                }
+            }
+        }
+    }
+    cout << "Code was not found" << endl;
 }
 
 void modify_key(map<int,list<string>> &hash_table);
