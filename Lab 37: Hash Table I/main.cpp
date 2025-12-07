@@ -140,8 +140,19 @@ void search_for_key(map<int,list<string>> &hash_table){
     cout << "Code was not found" << endl;
 }
 
-void add_key(map<int,list<string>> &hash_table);
+void add_key(map<int,list<string>> &hash_table){
+    string key;
+    cout << "Enter code to add: ";
+    cin >> key;
+    
+    int index = gen_hash_index(key);
+    hash_table[index].push_back(key);
+    
+    cout << "Added to bucket " << index << endl;
+}
 
-void remove_key(map<int,list<string>> &hash_table);
+void remove_key(map<int,list<string>> &hash_table){
+    
+}
 
 void modify_key(map<int,list<string>> &hash_table);
