@@ -17,7 +17,14 @@ using namespace std;
 //return: int
 int gen_hash_index(string &word);
 
+//function print prints the first 100 entries
+//arguments: map
+//return: none
 void print(map<int,list<string>> &hash_table);
+
+string search_for_key(map<int,list<string>> &hash_table);
+
+void add_key(map<int,list<string>> &hash_table);
 
 int main() {
     bool again = true;
