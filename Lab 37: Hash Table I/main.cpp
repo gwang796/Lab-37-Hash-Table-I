@@ -6,20 +6,19 @@
 //
 
 #include <iostream>
+#include <string>
 using namespace std;
 
 //function sum_ascii returns sum of a strings ascii values
 //arguments: string
 //return: int
-int sum_ascii(string word);
+int sum_ascii(string &word);
 
 int main() {
-    char a = 'A';
-    cout << a << endl;
-    cout << (int) a << endl;
-    int b = 66;
-    cout << b << endl;
-    cout << (char) b << endl;
+    string test = "christmas";
+    int test_size = sum_ascii(test);
+    cout << test << endl;
+    cout << test_size << endl;
     return 0;
 }
 /*
@@ -30,7 +29,10 @@ These targets are present in the dataset and can be used for testing:
 E1D2665B21EA
 */
 
-int sum_ascii(string word){
-    int num;
-    return num;
+int sum_ascii(string &word){
+    int sum = 0;
+    for (char c : word) {
+        sum += (int)c;
+    }
+    return sum;
 }
