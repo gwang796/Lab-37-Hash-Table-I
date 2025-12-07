@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <string>
+#include <fstream>
 using namespace std;
 
 //function sum_ascii returns sum of a strings ascii values
@@ -15,10 +16,18 @@ using namespace std;
 int sum_ascii(string &word);
 
 int main() {
-    string test = "christmas";
-    int test_size = sum_ascii(test);
-    cout << test << endl;
-    cout << test_size << endl;
+    string word;
+    int sum = 0;
+    ifstream inputFile("data.txt");
+    if (!inputFile) {
+        cout << "Unable to open File" << endl;
+    }
+    while (inputFile >> word) {
+        sum += sum_ascii(word);
+    }
+    inputFile.close();
+    
+    cout << sum << endl;
     return 0;
 }
 /*
