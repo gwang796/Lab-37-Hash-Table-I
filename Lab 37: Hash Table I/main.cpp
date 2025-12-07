@@ -8,6 +8,8 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <map>
+#include <list>
 using namespace std;
 
 //function sum_ascii returns sum of a strings ascii values
