@@ -15,21 +15,21 @@ using namespace std;
 //function sum_ascii returns sum of a strings ascii values
 //arguments: string
 //return: int
-int sum_ascii(string &word);
+int gen_hash_index(string &word);
 
 int main() {
     string word;
-    int sum = 0;
     ifstream inputFile("data.txt");
     if (!inputFile) {
         cout << "Unable to open File" << endl;
     }
+    map<int,list<string>> hash_table;
     while (inputFile >> word) {
-        sum += sum_ascii(word);
+        int index = gen_hash_index(word);
+        hash_table[index].push_back(word);
     }
     inputFile.close();
     
-    cout << sum << endl;
     return 0;
 }
 /*
@@ -40,10 +40,10 @@ These targets are present in the dataset and can be used for testing:
 E1D2665B21EA
 */
 
-int sum_ascii(string &word){
+int gen_hash_index(string &word){
     int sum = 0;
     for (char c : word) {
         sum += (int)c;
     }
-    return sum;
+    return sum % 97;
 }
