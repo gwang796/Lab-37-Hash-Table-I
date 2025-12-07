@@ -8,6 +8,11 @@
 #include <iostream>
 using namespace std;
 
+//function sum_ascii returns sum of a strings ascii values
+//arguments: string
+//return: int
+int sum_ascii(string word);
+
 int main() {
     char a = 'A';
     cout << a << endl;
@@ -24,3 +29,8 @@ These targets are present in the dataset and can be used for testing:
 666D109AA22E
 E1D2665B21EA
 */
+
+int sum_ascii(string word){
+    int num;
+    return num;
+}
