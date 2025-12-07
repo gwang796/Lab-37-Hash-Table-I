@@ -17,7 +17,10 @@ using namespace std;
 //return: int
 int gen_hash_index(string &word);
 
+void print(map<int,list<string>> &hash_table);
+
 int main() {
+    bool again = true;
     string word;
     ifstream inputFile("data.txt");
     if (!inputFile) {
@@ -32,12 +35,40 @@ int main() {
     
     
     int choice;
-    for (auto it = hash_table.begin(); it != hash_table.end(); ++it) {
-        cout << "Hash Index: " << it->first << endl;
-        cout << "Code: " << endl;
-        for (const string &s : it->second){
-            cout << s << endl;
+    while (again) {
+        cout << "----Hash Table Menu----" << endl;
+        cout << "1. print first 100 entries" << endl;
+        cout << "2. search for key" << endl;
+        cout << "3. add a key" << endl;
+        cout << "4. remove a key" << endl;
+        cout << "5. modify a key" << endl;
+        cout << "6. exit" << endl;
+        cout << "Choice: ";
+        cin >> choice;
+        
+        switch (choice) {
+            case 1:
+                print(hash_table);
+                break;
+            case 2:
+                
+                break;
+            case 3:
+                
+                break;
+            case 4:
+                
+                break;
+            case 5:
+                
+                break;
+            case 6:
+                cout << "Exiting" << endl;
+                again = false;
+            default:
+                break;
         }
+        
     }
     
     return 0;
@@ -56,4 +87,16 @@ int gen_hash_index(string &word){
         sum += (int)c;
     }
     return sum % 97;
+}
+
+void print(map<int,list<string>> &hash_table){
+    int count = 0;
+    for (auto it = hash_table.begin(); it != hash_table.end() && count < 100; ++it) {
+        cout << "Hash Index: " << it->first << endl;
+        cout << "Code: " << endl;
+        for (const string &s : it->second){
+            cout << s << endl;
+        }
+        count++;
+    }
 }
