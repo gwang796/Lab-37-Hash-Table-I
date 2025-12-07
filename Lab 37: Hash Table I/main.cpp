@@ -22,9 +22,25 @@ int gen_hash_index(string &word);
 //return: none
 void print(map<int,list<string>> &hash_table);
 
-string search_for_key(map<int,list<string>> &hash_table);
+//function search_for_key searches for mapped value
+//arguments: map
+//return: none
+void search_for_key(map<int,list<string>> &hash_table);
 
+//function add_key adds entry to map
+//arguments: map
+//return: none
 void add_key(map<int,list<string>> &hash_table);
+
+//function remove_key removes mapped value
+//arguments: map
+//return: none
+void remove_key(map<int,list<string>> &hash_table);
+
+//function modify_key modiefies mapped value
+//arguments: map
+//return: none
+void modify_key(map<int,list<string>> &hash_table);
 
 int main() {
     bool again = true;
@@ -107,3 +123,25 @@ void print(map<int,list<string>> &hash_table){
         count++;
     }
 }
+
+void search_for_key(map<int,list<string>> &hash_table){
+    string search;
+    cout << "Enter code to search: ";
+    cin >> search;
+    
+    int index = gen_hash_index(search);
+    
+    for (const string &s : hash_table[index]){
+        if (s == search) {
+            cout << "Code was found in bucket " << index << endl;
+            return;
+        }
+    }
+    cout << "Code was not found" << endl;
+}
+
+void add_key(map<int,list<string>> &hash_table);
+
+void remove_key(map<int,list<string>> &hash_table);
+
+void modify_key(map<int,list<string>> &hash_table);
