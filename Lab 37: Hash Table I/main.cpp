@@ -33,7 +33,7 @@ int main() {
     int count = 0;
     for (auto it = hash_table.begin(); it != hash_table.end() && count < 100; ++it) {
         cout << "Hash Index: " << it->first << endl;
-        cout << "Code: ";
+        cout << "Code: " << endl;
         for (const string &s : it->second){
             cout << s << endl;
         }
